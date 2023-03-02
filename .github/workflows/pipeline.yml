@@ -37,7 +37,7 @@ jobs:
      run: echo "Exito al correr pylint"
   
  job2:
-  name: "Unit test"
+  name: "Unit_test"
   needs: [ "Lint" ]
   runs-on: ubuntu-latest
   steps:
@@ -51,7 +51,7 @@ jobs:
  
  job3:
   name: "Build"
-  needs: [ "Unit test" ]
+  needs: [ "Unit_test" ]
   runs-on: ubuntu-latest
   steps:
    - name: "Checkout del repositorio"
