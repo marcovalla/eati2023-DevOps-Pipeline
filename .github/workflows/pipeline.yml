@@ -38,6 +38,7 @@ jobs:
   
  job2:
   name: "Unit test"
+  needs: [ "Lint" ]
   runs-on: ubuntu-latest
   steps:
    - name: "Correr test unitario"
@@ -50,6 +51,7 @@ jobs:
  
  job3:
   name: "Build"
+  needs: [ "Unit test" ]
   runs-on: ubuntu-latest
   steps:
    - name: "Checkout del repositorio"
@@ -66,6 +68,7 @@ jobs:
       
  job4:
   name: "Deploy"
+  needs: [ "Build" ]
   runs-on: ubuntu-latest
   steps:
    - name: "Descargar el artefacto"
