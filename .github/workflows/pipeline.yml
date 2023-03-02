@@ -42,7 +42,7 @@ jobs:
   runs-on: ubuntu-latest
   steps:
    - name: "Correr test unitario"
-     run: python test.py
+     run: python ./eati2023testing/test.py
      id: test_result
      
    - name: "Verificar test unitario (test.py)"
