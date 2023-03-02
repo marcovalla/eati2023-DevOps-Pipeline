@@ -74,6 +74,8 @@ jobs:
   name: "Deploy"
   needs: [ job3 ]
   runs-on: ubuntu-latest
+  env:
+   HTTP_CODE_RESULT : 0
   steps:
    - name: "Descargar el artefacto"
      uses: actions/download-artifact@v3
@@ -81,8 +83,8 @@ jobs:
       name: envoutput
       
    - name: "Ejecutar curl"
-     run: curl -v --stderr deploy.log -w "%{http_code}\n" -F password=${{ secrets.PASSWORD_VARIABLE }} -F file=@index.html -F user=${{ secrets.USER_VARIABLE }} https://cs.uns.edu.ar/~jose.moyano/index.php
-   
+     run: curl -v --stderr deploy.log -w "%{http_code}\n" -F password=${{ secrets.PASSWORD_VARIABLE }} -F file=@index.html -F user=${{ secrets.USER_VARIABLE }} https://cs.uns.edu.ar/~jose.moyano/index.php >> $HTTP_CODE_RESULT
+
    - name: "Subiendo el artefacto" 
      uses: actions/upload-artifact@v3 
      with:
@@ -90,7 +92,7 @@ jobs:
       path: deploy.log
       
    - name: "Verificar http_code 200"
-     run: echo 200
+     run: echo $HTTP_CODE_RESULT
      
      
      
