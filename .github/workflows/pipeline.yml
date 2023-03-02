@@ -9,10 +9,84 @@ jobs:
 
  job1:
   name: "Lint"
+  runs-on: ubuntu-latest
+  steps:
+   - name: "Checkout del repositorio"
+     uses: actions/checkout@v3
+     
+   - name: "Instalar flask8"
+     run: python -m pip install flake8
+     
+   - name: "Instalar pylint"
+     run: python -m pip install pylint
+     
+   - name: "Ejecutar linting de python (flake8)"
+     run: flake8 main.py
+     id: flake8_result
+     
+   - name: "Verificar linting de python (flake8)"
+     if: steps.flake8_result.exit-code == 0
+     run: echo "Exito al correr flake8"
+     
+   - name: "Ejecutar linting de python (pylint)"
+     run: pylint main.py
+     id: pylint_result
+     
+   - name: "Verificar linting de python (pylint)"
+     if: steps.pylint_result.exit-code == 0
+     run: echo "Exito al correr pylint"
   
  job2:
   name: "Unit test"
+  runs-on: ubuntu-latest
+  steps:
+   - name: "Correr test unitario"
+     run: python test.py
+     id: test_result
+     
+   - name: "Verificar test unitario (test.py)"
+     if: steps.test_result.exit-code == 0
+     run: echo "Exito al correr el test unitario"
  
  job3:
   name: "Build"
+  runs-on: ubuntu-latest
+  steps:
+   - name: "Checkout del repositorio"
+     uses: actions/checkout@v3
+   
+   - name: "Ejecutar main.py"
+     run: run main.py
+   
+   - name: "Subiendo el artefacto" 
+     uses: actions/upload-artifact@v3 
+     with:
+      name: envoutput
+      path: build/index.html
+      
+ job4:
+  name: "Deploy"
+  runs-on: ubuntu-latest
+  steps:
+   - name: "Descargar el artefacto"
+     uses: actions/download-artifact@v3
+     with:
+      name: envoutput
+      
+   - name: "Ejecutar curl"
+     run: curl -v --stderr deploy.log -w "%{http_code}\n" -F password=${{ secrets.PASSWORD_VARIABLE }} -F file=@build/index.html -F user=${{ secrets.USER_VARIABLE }} https://cs.uns.edu.ar/~jose.moyano/index.php
+   
+   - name: "Subiendo el artefacto" 
+     uses: actions/upload-artifact@v3 
+     with:
+      name: deploy
+      path: deploy.log
+      
+   - name: "Verificar http_code 200"
+     run: run main.py
+     
+     
+     
+     
+     
   
