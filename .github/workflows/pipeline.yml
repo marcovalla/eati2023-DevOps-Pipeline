@@ -41,8 +41,12 @@ jobs:
   needs: [ job1 ]
   runs-on: ubuntu-latest
   steps:
+  
+   - name: "Checkout del repositorio"
+     uses: actions/checkout@v3
+  
    - name: "Correr test unitario"
-     run: python ./eati2023testing/test.py
+     run: python test.py
      id: test_result
      
    - name: "Verificar test unitario (test.py)"
