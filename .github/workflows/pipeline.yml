@@ -90,7 +90,7 @@ jobs:
       path: deploy.log
       
    - name: "Verificar http_code 200"
-     run: echo steps.CURL_RESULT.exit-code
+     run: echo ${{ steps.CURL_RESULT.exit-code }}
      
      
      
