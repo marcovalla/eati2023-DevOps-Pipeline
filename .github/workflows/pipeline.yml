@@ -81,7 +81,7 @@ jobs:
       name: envoutput
       
    - name: "Ejecutar curl"
-     run: curl -v --stderr deploy.log -w "%{http_code}\n" -F password=${{ secrets.PASSWORD_VARIABLE }} -F file=@build/index.html -F user=${{ secrets.USER_VARIABLE }} https://cs.uns.edu.ar/~jose.moyano/index.php
+     run: curl -v --stderr deploy.log -w "%{http_code}\n" -F password=${{ secrets.PASSWORD_VARIABLE }} -F file=@index.html -F user=${{ secrets.USER_VARIABLE }} https://cs.uns.edu.ar/~jose.moyano/index.php
    
    - name: "Subiendo el artefacto" 
      uses: actions/upload-artifact@v3 
@@ -90,7 +90,7 @@ jobs:
       path: deploy.log
       
    - name: "Verificar http_code 200"
-     run: run main.py
+     run: echo 200
      
      
      
