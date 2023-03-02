@@ -45,9 +45,12 @@ jobs:
    - name: "Checkout del repositorio"
      uses: actions/checkout@v3
   
-   - name: "Correr test unitario"
+   - name: "Ejecutar test.py"
      run: python test.py
      id: test_result
+     
+   - name: "Correr test unitario"
+     run: python -m unittest --verbose --failfast 
      
    - name: "Verificar test unitario (test.py)"
      if: steps.test_result.exit-code == 0
@@ -83,6 +86,7 @@ jobs:
    - name: "Ejecutar curl"
      run: curl -v --stderr deploy.log -w "%{http_code}\n" -F password=${{ secrets.PASSWORD_VARIABLE }} -F file=@index.html -F user=${{ secrets.USER_VARIABLE }} https://cs.uns.edu.ar/~jose.moyano/index.php
      id: CURL_RESULT
+     
    - name: "Subiendo el artefacto" 
      uses: actions/upload-artifact@v3 
      with:
@@ -90,7 +94,7 @@ jobs:
       path: deploy.log
       
    - name: "Verificar http_code 200"
-     run: echo ${{ steps.CURL_RESULT.stdout }}
+     run: echo "El http code es ${{ steps.CURL_RESULT.stdout }}"
      
      
      
