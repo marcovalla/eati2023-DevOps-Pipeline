@@ -1,0 +1,57 @@
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0*   Trying 10.0.2.5:443...
+* Connected to cs.uns.edu.ar (10.0.2.5) port 443 (#0)
+* ALPN, offering h2
+* ALPN, offering http/1.1
+*  CAfile: C:/Program Files/Git/mingw64/ssl/certs/ca-bundle.crt
+*  CApath: none
+} [5 bytes data]
+* TLSv1.3 (OUT), TLS handshake, Client hello (1):
+} [512 bytes data]
+* TLSv1.3 (IN), TLS handshake, Server hello (2):
+{ [93 bytes data]
+* TLSv1.2 (IN), TLS handshake, Certificate (11):
+{ [4038 bytes data]
+* TLSv1.2 (IN), TLS handshake, Server key exchange (12):
+{ [333 bytes data]
+* TLSv1.2 (IN), TLS handshake, Server finished (14):
+{ [4 bytes data]
+* TLSv1.2 (OUT), TLS handshake, Client key exchange (16):
+} [70 bytes data]
+* TLSv1.2 (OUT), TLS change cipher, Change cipher spec (1):
+} [1 bytes data]
+* TLSv1.2 (OUT), TLS handshake, Finished (20):
+} [16 bytes data]
+* TLSv1.2 (IN), TLS handshake, Finished (20):
+{ [16 bytes data]
+* SSL connection using TLSv1.2 / ECDHE-RSA-AES256-GCM-SHA384
+* ALPN, server did not agree to a protocol
+* Server certificate:
+*  subject: CN=cs.uns.edu.ar
+*  start date: Feb  5 23:11:02 2023 GMT
+*  expire date: May  6 23:11:01 2023 GMT
+*  subjectAltName: host "cs.uns.edu.ar" matched cert's "cs.uns.edu.ar"
+*  issuer: C=US; O=Let's Encrypt; CN=R3
+*  SSL certificate verify ok.
+} [5 bytes data]
+> POST /~jose.moyano/index.php HTTP/1.1
+> Host: cs.uns.edu.ar
+> User-Agent: curl/7.81.0
+> Accept: */*
+> Content-Length: 401
+> Content-Type: multipart/form-data; boundary=------------------------e9853be9dbadeaa9
+> 
+} [5 bytes data]
+* We are completely uploaded and fine
+{ [5 bytes data]
+* Mark bundle as not supporting multiuse
+< HTTP/1.1 200 OK
+< Date: Fri, 03 Mar 2023 17:29:41 GMT
+< Server: Apache
+< X-Powered-By: PHP/5.6.40
+< Content-Length: 0
+< Content-Type: text/html; charset=UTF-8
+< 
+100   401    0     0  100   401      0   8733 --:--:-- --:--:-- --:--:--  8911
+* Connection #0 to host cs.uns.edu.ar left intact
