@@ -86,7 +86,7 @@ jobs:
       path: deploy.log
       
    - name: "Verificar http_code 200"
-     if: ${{ CURL_RESULT == 200 }}
+     if: ${{toNumber(CURL_RESULT) == 200}}
      run: echo "El http code es ${CURL_RESULT}"
      
      
