@@ -82,7 +82,7 @@ jobs:
       echo "RES=$RESULTADO_CURL" >> $GITHUB_OUTPUT
 
    - name: "Verificar resultado de curl"
-     if: ${{ steps.CURL.outputs.RES == '300' }}
+     if: ${{ steps.CURL.outputs.RES == '200' }}
      run: echo "El http_code es 200"
      
    - name: "Subiendo el artefacto" 
