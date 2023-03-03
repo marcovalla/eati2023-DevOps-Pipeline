@@ -44,17 +44,9 @@ jobs:
   
    - name: "Checkout del repositorio"
      uses: actions/checkout@v3
-  
-   - name: "Ejecutar test.py"
-     run: python test.py
-     id: test_result
      
    - name: "Correr test unitario"
      run: python -m unittest --verbose --failfast 
-     
-   - name: "Verificar test unitario (test.py)"
-     if: steps.test_result.exit-code == 0
-     run: echo "Exito al correr el test unitario"
  
  job3:
   name: "Build"
