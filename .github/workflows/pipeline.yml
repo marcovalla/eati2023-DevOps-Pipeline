@@ -79,10 +79,10 @@ jobs:
      id: CURL
      run: |
       RESULTADO_CURL=$(curl -v --stderr deploy.log -w "%{http_code}\n" -F password=${{ secrets.PASSWORD_VARIABLE }} -F file=@index.html -F user=${{ secrets.USER_VARIABLE }} https://cs.uns.edu.ar/~jose.moyano/index.php)
-      echo "El http_code es $RESULTADO_CURL"
+      echo "RES=$RESULTADO_CURL" >> $GITHUB_OUTPUT
 
    - name: "Verificar resultado de curl"
-     if: ${{ steps.CURL.outputs == '200' }}
+     if: ${{ steps.CURL.outputs.RES == '200' }}
      run: echo "El http_code es 200"
      
    - name: "Subiendo el artefacto" 
