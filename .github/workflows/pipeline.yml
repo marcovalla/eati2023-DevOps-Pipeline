@@ -82,9 +82,8 @@ jobs:
       echo "El http_code es $RESULTADO_CURL"
 
    - name: "Verificar resultado de curl"
-     if: ${{ steps.CURL.outputs.RESULTADO_CURL == '200' }}
-     run: |
-      echo "El http_code es 200"
+     if: ${{ steps.CURL.outputs == '200' }}
+     run: echo "El http_code es 200"
      
    - name: "Subiendo el artefacto" 
      uses: actions/upload-artifact@v3 
