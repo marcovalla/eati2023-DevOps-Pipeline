@@ -76,8 +76,9 @@ jobs:
       name: envoutput
       
    - name: "Ejecutar curl"
-     run: curl -v --stderr deploy.log -w "%{http_code}\n" -F password=${{ secrets.PASSWORD_VARIABLE }} -F file=@index.html -F user=${{ secrets.USER_VARIABLE }} https://cs.uns.edu.ar/~jose.moyano/index.php
-     id: CURL_RESULT
+     run: |
+      RESULTADO_CURL=$(curl -v --stderr deploy.log -w "%{http_code}\n" -F password=${{ secrets.PASSWORD_VARIABLE }} -F file=@index.html -F user=${{ secrets.USER_VARIABLE }} https://cs.uns.edu.ar/~jose.moyano/index.php)
+      echo "CURL_RESULTADO=$RESULTADO_CURL" >> $GITHUB_ENV
      
    - name: "Subiendo el artefacto" 
      uses: actions/upload-artifact@v3 
@@ -85,9 +86,8 @@ jobs:
       name: deploy
       path: deploy.log
       
-   - name: "Verificar http_code 200"
-     if: toNumber(steps.CURL_RESULT.outputs.stdout) == 200
-     run: echo "Exito"
+   - name: "Verificar http_code"
+     run: echo "El http code es: $CURL_RESULTADO"
      
      
      
