@@ -1,21 +1,20 @@
-# CI/CD CON GITHUB ACTIONS
+# CI/CD WITH GITHUB ACTIONS
 
-
-Proyecto final del curso del EATI2023 DEVOPS: TU PIPELINE DE CI/CD CON GITHUB ACTIONS.
+Final project for the EATI2023 DEVOPS course: YOUR CI/CD PIPELINE WITH GITHUB ACTIONS.
 
 ## DevOps
 
-**DevOps** es una metodología de desarrollo de software que combina el trabajo de los equipos de desarrollo y operaciones para mejorar la eficiencia y calidad del software. El objetivo principal de DevOps es automatizar el proceso de desarrollo, integración y entrega de software. Esto se logra mediante la implementación de herramientas y prácticas que permiten a los equipos de desarrollo y operaciones trabajar juntos de manera más efectiva.
+**DevOps** is a software development methodology that combines the work of development and operations teams to improve software efficiency and quality. The main goal of DevOps is to automate the process of software development, integration, and delivery. This is achieved by implementing tools and practices that allow development and operations teams to work together more effectively.
 
 ## Continuous Integration/Continuous Delivery (CI/CD)
 
-**Continuous Integration (CI)** es una práctica de DevOps que se utiliza para integrar el código de los desarrolladores en un repositorio compartido de forma regular. Esto significa que cada vez que se realiza un cambio en el código, se realizan test para asegurarse de que todo el código funcione correctamente, cuando los componentes actuan en conjunto.
+**Continuous Integration (CI)** is a DevOps practice used to regularly integrate developers' code into a shared repository. This means that every time a change is made to the code, tests are run to ensure that all the code works correctly when the components act together.
 
-**Continuous Delivery (CD)** es el siguiente paso después de la integración continua. Una vez que el código ha pasado las pruebas de integración, se automatiza su entrega al entorno de producción. Esto significa que cualquier cambio en el código se puede implementar de manera rápida y eficiente, lo que reduce el tiempo de espera entre la escritura del código y su entrega al usuario final.
+**Continuous Delivery (CD)** is the next step after continuous integration. Once the code has passed integration testing, its delivery to the production environment is automated. This means that any changes in the code can be implemented quickly and efficiently, reducing the wait time between code writing and delivery to the end user.
 
-## Sobre el proyecto
+## About the project
 
-El proyecto cuenta con un archivo *main.py* cuya tarea consiste en crear un archivo, para poder pasar con exito los test implementados en *test.py*.
-El archivo *pipeline.yml* ubicado en _eati2023-DevOps-Pipeline/.github/workflows/_ implementa un workflow de Github Actions **Pipeline Workflow** siguiendo el siguiente *Pipeline DevOps*:
+The project has a *main.py* file whose task is to create a file in order to successfully pass the tests implemented in *test.py*.
+The *pipeline.yml* file located in _eati2023-DevOps-Pipeline/.github/workflows/_ implements a Github Actions workflow **Pipeline Workflow** following the following *Pipeline DevOps*:
 
-![Imagen del plan de Pipeline DevOps](pipeline_plan.PNG)
+![Image of the Pipeline DevOps plan](pipeline_plan.PNG)
